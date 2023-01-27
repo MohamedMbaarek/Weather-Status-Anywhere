@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <title>{{title}}</title>
+</head>
+<body>
+    {% extends "layout.html" %}
+    {% block content %}
+    <section class="main">
+        <div class="title">
+            <h1>Search a city or a country...</h1>
+        </div>
+        <form action="" method="POST">
+            <div class="input">
+                <input type="text" class="field" name="search" placeholder="City name" required>
+                <label for="search" class="form_label">City name</label>
+            </div>
+            {% if error %}
+            <div class="error">
+                <p class="error">{{ error }}</p>
+            </div>
+            {% endif %}
+            <div class="button">
+                <button>Search</button>
+            </div> 
+        </form>
+    </section>
+    {% endblock %}
+</body>
+</html>

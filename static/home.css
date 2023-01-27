@@ -1,0 +1,114 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-image: url("https://images.unsplash.com/photo-1444090542259-0af8fa96557e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.main{
+    border: 1px solid black;
+    width: 60%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 20px;
+    border-radius: 16px;
+    background-color: rgba(255, 255, 255, 0.33);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.5px);
+    border: 0;
+}
+
+.input, .button, .title{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input{
+    position: relative;
+    padding: 15px 0 0;
+    width: 50%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.field{
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid;
+    outline: 0;
+    font-size: 1.3rem;
+    color: white;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+.field::placeholder{
+    color: transparent;
+}
+
+.field:placeholder-shown ~ .form_label{
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+}
+
+.form_label{
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: white;
+    margin-right: 81%;
+}
+
+.field:focus ~ .form_label{
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.field:required, .field:invalid{
+    box-shadow: none;
+}
+
+.title{
+    color: white;
+}
+
+.error{
+    width: 50%;
+    margin: auto;
+    margin-bottom: 2px;
+}
+
+.error p{
+    width: 100%;
+    background-color: orangered;
+    color: white;
+}
+
+.button{
+    width: 50%;
+    margin: auto;
+}
+
+.button button{
+    width: 100%;
+    padding: 10px;
+    background-color: #fbefcc;
+    outline: 0;
+    border: 0;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    color: #d9ad7c;
+    font-weight: bold;
+}

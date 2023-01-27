@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <style>
+        header{
+            background-color: #fbefcc;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        span{
+            padding: 3px;
+            border-bottom: solid #d9ad7c;
+            display: flex;
+        }
+        a{
+            text-decoration: none;
+            color: #d9ad7c;
+            font-weight: bold;
+            position: relative;
+        }
+        a:hover{
+            top: -5px;
+        }
+    </style>
+    <header>
+        <nav class="navbar" aria-label="main navigation">
+            <div>
+                <span>
+                    <a href="{{ url_for('home_page') }}">Home</a>
+                </span>
+            </div>
+        </nav>
+    </header>
+    <footer>
+        <p>&copy</p>
+    </footer>
+    {% block content %}{% endblock %}
+</body>
+</html>
