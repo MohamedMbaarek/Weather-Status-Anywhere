@@ -6,17 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
     <title>{{title}}</title>
-</head>
 <body>
     {% block content %}
     <section class="main">
         <div class="title">
-            <h1>Search a city or a country...</h1>
+            <h1>Please enter your credentials</h1>
         </div>
         <form action="" method="POST">
             <div class="input">
-                <input type="text" class="field" name="search" placeholder="City name" required>
-                <label for="search" class="form_label">City name</label>
+                <input type="text" required class="field" name="Username" placeholder="Username" required>
+                <label for="Username" class="form_label">Username</label>
+            </div>
+            <div class="input">
+                <input type="password" required class="field" name="Password" placeholder="Password" required>
+                <label for="Password" class="form_label">Password</label>
             </div>
             {% if error %}
             <div class="error">
@@ -24,7 +27,10 @@
             </div>
             {% endif %}
             <div class="button">
-                <button>Search</button>
+                <button>Sign in</button>
+            </div> 
+            <div class="button">
+                <button><a href="/SignUp">Sign up</a></button>
             </div> 
         </form>
     </section>
