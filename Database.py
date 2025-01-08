@@ -1,10 +1,10 @@
-import psycopg2
+import mysql.connector
 
 def get_db_connection():
-    conn = psycopg2.connect(
-        host="localhost", 
-        database="Weather",  
-        user="postgres",  
-        port=5432
+    conn = mysql.connector.connect(
+        host="localhost",
+        database="weatherdb",  
+        user="root",         
+        port=3306            
     )
     return conn
