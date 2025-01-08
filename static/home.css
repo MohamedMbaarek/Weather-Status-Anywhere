@@ -1,4 +1,3 @@
-/* home.css */
 body {
     font-family: "Poppins", Arial, sans-serif;
     margin: 0;
@@ -7,7 +6,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    color: #F28B30; /* Warm orange for text */
+    color: #F28B30;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,7 +23,7 @@ a{
     max-width: 600px;
     padding: 30px;
     border-radius: 16px;
-    background: rgba(255, 255, 255, 0.1); /* Transparent form background */
+    background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
     text-align: center;
     backdrop-filter: blur(8px); 
@@ -33,7 +32,7 @@ a{
 .title h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: white; /* Main title color */
+    color: white;
 }
 
 .input {
@@ -46,16 +45,16 @@ a{
     width: 100%;
     padding: 10px 10px 10px 0;
     border: none;
-    border-bottom: 2px solid #732F20; /* Dark accent for input underline */
+    border-bottom: 2px solid #732F20;
     background: transparent;
-    color: #BF3604; /* Deep orange for input text */
+    color: #BF3604;
     font-size: 1.2rem;
     outline: none;
     transition: border-color 0.3s ease;
 }
 
 .field:focus {
-    border-bottom-color: #F28B30; /* Warm orange for focus */
+    border-bottom-color: #F28B30;
 }
 
 .field::placeholder {
@@ -67,7 +66,7 @@ a{
     top: 10px;
     left: 0;
     font-size: 1rem;
-    color: #F2C8A2; /* Soft beige for labels */
+    color: #F2C8A2;
     pointer-events: none;
     transition: transform 0.2s ease, font-size 0.2s ease;
 }
@@ -76,13 +75,13 @@ a{
 .field:not(:placeholder-shown) ~ .form_label {
     transform: translateY(-20px);
     font-size: 0.9rem;
-    color: #F28B30; /* Highlight label color */
+    color: #F28B30;
 }
 
 .error {
     margin: 10px auto;
     padding: 10px;
-    background-color: rgba(191, 54, 4, 0.9); /* Bright error background */
+    background-color: rgba(191, 54, 4, 0.9);
     border-radius: 5px;
     color: white;
     font-size: 0.9rem;
@@ -100,7 +99,7 @@ a{
     padding: 12px;
     border: none;
     border-radius: 5px;
-    background-color: #D95204; /* Button background */
+    background-color: #D95204;
     color: #fff;
     font-size: 1.2rem;
     font-weight: bold;
@@ -109,11 +108,11 @@ a{
 }
 
 .button button:hover {
-    background-color: #F28B30; /* Lighter orange for hover */
+    background-color: #F28B30;
     transform: translateY(-3px);
 }
 
 .button button:active {
-    background-color: #732F20; /* Darker color for active state */
+    background-color: #732F20;
     transform: translateY(1px);
 }

@@ -24,25 +24,45 @@ def get_response():
 
     return response
 
+import matplotlib.pyplot as plt
+import numpy as np
+from datetime import datetime
+
 def create_plot():
-    response = get_response()
+    response = get_response()  # Replace with your API call
     date = datetime.now().strftime("%Y-%m-%d")
     data_set = response["list"]
     space = data_set[0]["dt_txt"].find(" ")
     time_list = []
     temp_list = []
-    time_array = ([])
-    temp_array = ([])
+
     for data in data_set:
-        time_list.append(data["dt_txt"][space+1:len(data["dt_txt"])-3])
+        time_list.append(data["dt_txt"][space + 1:len(data["dt_txt"]) - 3])
         temp_list.append(convert_kelvin_to_celcius(data["main"]["temp"]))
 
+    # Convert to numpy arrays for plotting
     time_array = np.array(time_list)
     temp_array = np.array(temp_list)
 
-    plt.figure()
-    plt.bar(time_array,temp_array)
-    plt.savefig("current_plot.png")
+    # Plot customization
+    plt.figure(figsize=(10, 6))
+    plt.bar(time_array, temp_array, color='#F28B30', alpha=0.8, edgecolor='#732F20')
+
+    # Styling the plot to match the transparent form style
+    plt.gca().set_facecolor((0, 0, 0, 0))  # Transparent background for plot area
+    plt.gcf().set_facecolor((1, 1, 1, 0))  # Transparent overall background
+
+    plt.title("Temperature Forecast", fontsize=16, color='white')
+    plt.xlabel("Time", fontsize=12, color='white')
+    plt.ylabel("Temperature (°C)", fontsize=12, color='white')
+    plt.xticks(rotation=45, fontsize=10, color='white')
+    plt.yticks(fontsize=10, color='white')
+    plt.tight_layout()
+
+    # Save the plot as a transparent PNG
+    plt.savefig("static/current_plot.png", transparent=True)
+    plt.close()
+
 
 def login_page():
     if "user" in session:

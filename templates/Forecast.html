@@ -5,40 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='forecast.css') }}">
+    <title>Weather Forecast</title>
 </head>
 <body>
     {% extends 'layout.html' %}
     {% block content %}
     <section class="main">
-    <div class="left">
-        <div class="info">
-            <p id="city">{{ city }}</p>
-            <p id="time">{{ time }}</p>
-        </div>
-        <div class="icon">
-            <div class="column">
-                <img src="{{icon}}" id="icon" alt="weather icon">
+        <div class="left">
+            <div class="info">
+                <p id="city">{{ city }}</p>
+                <p id="time">{{ time }}</p>
             </div>
-            <div class="column">
-                <p id="temp">{{ temperature }} C°</p>
+            <div class="icon">
+                <div class="column">
+                    <img src="{{ icon }}" id="icon" alt="weather icon">
+                </div>
+                <div class="column">
+                    <p id="temp">{{ temperature }} C°</p>
+                </div>
+            </div>
+            <div class="desc">
+                <p id="desc">{{ description }}</p>
+            </div>
+            <div class="detailed">
+                <div class="column2">
+                    <p id="subtitle">Humidity</p>
+                    <p id="humidity">{{ humidity }} %</p>
+                </div>
+                <div class="column2">
+                    <p id="subtitle">Wind Speed</p>
+                    <p id="wind">{{ wind }} Km/h</p>
+                </div>
             </div>
         </div>
-        <div class="desc">
-            <p id="desc">{{ description }}</p>
-        </div>
-        <div class="detailed">
-            <div class="column2">
-                <p id="subtitle">Humidity</p>
-                <p id="humidity">{{ humidity }} %</p>
-            </div>
-            <div class="column2">
-                <p id="subtitle">Wind Speed</p>
-                <p id="wind">{{ wind }} Km/h</p>
+        <div class="right">
+            <div class="plot-container">
+                <h3 id="plot-title">Temperature Forecast</h3>
+                <img src="{{ url_for('static', filename='current_plot.png') }}" alt="Temperature Plot" id="forecast-plot">
             </div>
         </div>
-    </div>
-    <div class="right">
-    </div>
     </section>
     {% endblock %}
 </body>
