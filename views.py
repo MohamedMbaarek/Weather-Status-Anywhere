@@ -65,6 +65,7 @@ def create_plot():
 
 
 def login_page():
+    # If user is already logged in, redirect to home page
     if "user" in session:
         return redirect(url_for("home_page"))
 
@@ -72,21 +73,23 @@ def login_page():
         username = request.form.get("username")
         password = request.form.get("password")
 
+        # Check if both fields are provided
         if not username or not password:
             error = "Both fields are required."
             return render_template("login.html", title="Sign in", error=error)
 
-        # Connect to the database and verify credentials
+        # Get a database connection
         conn = Database.get_db_connection()
-        cursor = conn.cursor(cursor_factory=RealDictCursor)
+        cursor = conn.cursor(dictionary=True)  # Use dictionary cursor for fetching results as dictionaries
 
+        # Query to fetch user details by username
         cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
         user = cursor.fetchone()
 
         cursor.close()
         conn.close()
 
-        if user and check_password_hash(user["password"], password):
+        if user and check_password_hash(user["password"], password):  # Check if user exists and password is correct
             session["user"] = user["username"]
             return redirect(url_for("home_page"))
         else:
@@ -133,8 +136,8 @@ def register_page():
         conn.close()
 
         # Log the user in after registration
-        session["user"] = username
-        return redirect(url_for("home_page"))
+        #session["user"] = username
+        return redirect(url_for("login_page"))
 
     return render_template("register.html", title="Register")
 
