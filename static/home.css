@@ -116,3 +116,41 @@ a{
     background-color: #732F20;
     transform: translateY(1px);
 }
+
+
+/* Header styling */
+header {
+    width: 100%;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);  /* Semi-transparent background */
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: right;
+    color: #F28B30;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.logout-btn {
+    background-color: #732F20;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #F28B30;
+}

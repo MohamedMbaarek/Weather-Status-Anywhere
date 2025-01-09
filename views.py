@@ -141,6 +141,9 @@ def register_page():
 
     return render_template("register.html", title="Register")
 
+def logout():
+    session.pop('user', None)  # Remove user from session
+    return redirect(url_for('login_page'))  # Redirect to the login page
 
 
 def home_page():

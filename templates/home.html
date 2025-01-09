@@ -8,6 +8,16 @@
     <title>{{title}}</title>
 </head>
 <body>
+    <!-- Header with Logout Button -->
+    <header>
+        <div class="header-content">
+            <h2>Welcome, {{ session['user'] if 'user' in session else '' }}</h2>
+            <form action="{{ url_for('logout') }}" method="POST">
+                <button type="submit" class="logout-btn">Logout</button>
+            </form>
+        </div>
+    </header>
+    
     {% block content %}
     <section class="main">
         <div class="title">
