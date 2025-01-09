@@ -10,6 +10,7 @@ def create_app():
     app.add_url_rule("/SignUp", view_func=views.register_page,methods=["GET", "POST"])
     app.add_url_rule("/Home",view_func=views.home_page,methods=["GET","POST"])
     app.add_url_rule("/logout", view_func=views.logout,methods=["POST"])
+    app.add_url_rule("/forecast",view_func=views.forecast,methods=["GET","POST"])
     return app
 
 
