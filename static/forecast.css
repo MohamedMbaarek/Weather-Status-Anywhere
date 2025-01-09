@@ -152,7 +152,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; 
+    flex-wrap: wrap; }
 
 .header-content h2 {
     margin: 0;
@@ -201,9 +201,10 @@ header {
 
 @media (max-width: 480px) {
     .header-content h2 {
-        font-size: 1rem; 
+        font-size: 1rem; /* Smaller font size for very small screens */
+    }
 
     .logout-btn {
-        font-size: 0.9rem; 
+        font-size: 0.9rem; /* Adjust button text size */
     }
 }
