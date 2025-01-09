@@ -11,10 +11,11 @@
     <header>
         <div class="header-content">
             <h2>Welcome, {{ session['user'] if 'user' in session else '' }}</h2>
+            <a href="{{ url_for('home_page') }}"><button class="logout-btn">Home</button></a>
             <form action="{{ url_for('logout') }}" method="POST">
-                <a href="{{ url_for('home_page') }}"><button class="logout-btn">Home</button></a>
                 <button type="submit" class="logout-btn">Logout</button>
             </form>
+           
         </div>
     </header>
    
@@ -49,7 +50,7 @@
         </div>
         <div class="right">
             <div class="plot-container">
-                <h3 id="plot-title">Temperature Forecast</h3>
+                
                 <img src="{{ url_for('static', filename='current_plot.png') }}" alt="Temperature Plot" id="forecast-plot">
             </div>
         </div>

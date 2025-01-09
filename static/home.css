@@ -122,23 +122,26 @@ a{
 header {
     width: 100%;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);  /* Semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
     position: absolute;
     top: 0;
     left: 0;
-    text-align: right;
     color: #F28B30;
+    box-sizing: border-box; /* Ensures padding is included in the width */
 }
 
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; /* Allows content to wrap on smaller screens */
 }
 
 .header-content h2 {
     margin: 0;
     font-size: 1.5rem;
+    flex: 1 1 auto; /* Adjusts size based on available space */
+    text-align: left; /* Align title to the left */
 }
 
 .logout-btn {
@@ -149,8 +152,42 @@ header {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    flex: 0 0 auto; /* Prevents the button from shrinking too much */
 }
 
 .logout-btn:hover {
     background-color: #F28B30;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    header {
+        padding: 10px;
+    }
+
+    .header-content {
+        flex-direction: column; /* Stacks content vertically on smaller screens */
+        align-items: flex-start; /* Aligns items to the left */
+    }
+
+    .header-content h2 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .logout-btn {
+        width: 100%; /* Full width button for easier interaction */
+        text-align: center; /* Centers button text */
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h2 {
+        font-size: 1rem; /* Smaller font size for very small screens */
+    }
+
+    .logout-btn {
+        font-size: 0.9rem; /* Adjust button text size */
+    }
 }

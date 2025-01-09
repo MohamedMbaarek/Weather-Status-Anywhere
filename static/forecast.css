@@ -1,8 +1,16 @@
-body{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+body {
+    font-family: "Poppins", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     background-image: url("https://images.unsplash.com/photo-1444090542259-0af8fa96557e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
+    background-position: center;
+    color: #F28B30;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 
@@ -132,23 +140,25 @@ section{
 header {
     width: 100%;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);  /* Semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.5); 
     position: absolute;
     top: 0;
     left: 0;
-    text-align: right;
     color: #F28B30;
+    box-sizing: border-box;
 }
 
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+    flex-wrap: wrap; 
 
 .header-content h2 {
     margin: 0;
     font-size: 1.5rem;
+    flex: 1 1 auto;
+    text-align: left; 
 }
 
 .logout-btn {
@@ -159,8 +169,41 @@ header {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    flex: 0 0 auto; 
 }
 
 .logout-btn:hover {
     background-color: #F28B30;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    header {
+        padding: 10px;
+    }
+
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start; 
+    }
+
+    .header-content h2 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .logout-btn {
+        width: 100%; 
+        text-align: center; 
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h2 {
+        font-size: 1rem; 
+
+    .logout-btn {
+        font-size: 0.9rem; 
+    }
 }

@@ -1,11 +1,14 @@
 from flask import render_template, url_for, request, redirect, session
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime
 import Database
 import requests
-import numpy as np
-from matplotlib import pyplot as plt
 from psycopg2.extras import RealDictCursor
+import matplotlib
+matplotlib.use('Agg')  # Use non-interactive backend
+
+from matplotlib import pyplot as plt
+import numpy as np
+from datetime import datetime
 
 
 def convert_kelvin_to_celcius(kelvin):
@@ -24,9 +27,6 @@ def get_response(city):
 
     return response
 
-import matplotlib.pyplot as plt
-import numpy as np
-from datetime import datetime
 
 def create_plot(cityName):
     response = get_response(cityName)
@@ -52,11 +52,11 @@ def create_plot(cityName):
     plt.gca().set_facecolor((0, 0, 0, 0))  # Transparent background for plot area
     plt.gcf().set_facecolor((1, 1, 1, 0))  # Transparent overall background
 
-    plt.title("Temperature Forecast", fontsize=16, color='white')
-    plt.xlabel("Time", fontsize=12, color='white')
-    plt.ylabel("Temperature (°C)", fontsize=12, color='white')
-    plt.xticks(rotation=45, fontsize=10, color='white')
-    plt.yticks(fontsize=10, color='white')
+    plt.title("Temperature Forecast", fontsize=16, color='Black')
+    plt.xlabel("Time", fontsize=12, color='Black')
+    plt.ylabel("Temperature (°C)", fontsize=12, color='Black')
+    plt.xticks(rotation=45, fontsize=10, color='Black')
+    plt.yticks(fontsize=10, color='Black')
     plt.tight_layout()
 
     # Save the plot as a transparent PNG
