@@ -4,11 +4,11 @@ import Database
 import requests
 from psycopg2.extras import RealDictCursor
 import matplotlib
-matplotlib.use('Agg')  # Use non-interactive backend
+matplotlib.use('Agg')
 
 from matplotlib import pyplot as plt
 import numpy as np
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 def convert_kelvin_to_celcius(kelvin):
@@ -59,6 +59,43 @@ def create_plot(cityName):
     plt.savefig("static/current_plot.png", transparent=True)
     plt.close()
 
+def create_plot_precipitation(cityName):
+    response = get_response(cityName)
+    data_set = response["list"]
+    
+    precipitation_list = []
+    time_list = []
+
+    for entry in data_set:
+        time = entry["dt_txt"].split(" ")[1][:-3]
+        time_list.append(time)
+
+        if "rain" in entry and "3h" in entry["rain"]:
+            precipitation_list.append(entry["rain"]["3h"])
+        else:
+            precipitation_list.append(entry["main"]["humidity"])
+
+    time_array = np.array(time_list)
+    data_array = np.array(precipitation_list)
+
+    data_type = "Precipitation (mm)" if "rain" in data_set[0] else "Humidity (%)"
+
+    plt.figure(figsize=(10, 8))
+    plt.bar(time_array, data_array, color='#30A2DA', alpha=0.8, edgecolor='#005288')
+
+    plt.gca().set_facecolor((0, 0, 0, 0))
+    plt.gcf().set_facecolor((1, 1, 1, 0))
+    
+    plt.title(f"{data_type} Forecast", fontsize=16, color='Black')
+    plt.xlabel("Time", fontsize=12, color='Black')
+    plt.ylabel(data_type, fontsize=12, color='Black')
+    plt.xticks(rotation=45, fontsize=10, color='Black')
+    plt.yticks(fontsize=10, color='Black')
+    plt.tight_layout()
+
+    plt.savefig("static/precipitation_plot.png", transparent=True)
+    plt.close()
+
 
 def login_page():
     if "user" in session:
@@ -81,7 +118,8 @@ def login_page():
         cursor.close()
         conn.close()
 
-        if user and check_password_hash(user["password"], password):  # Check if user exists and password is correct
+        if user and check_password_hash(user["password"], password):
+            session.permanent = True
             session["user"] = user["username"]
             return redirect(url_for("home_page"))
         else:
@@ -98,9 +136,14 @@ def register_page():
         username = request.form.get("username")
         email = request.form.get("email")
         password = request.form.get("password")
+        confirm_password = request.form.get("confirm_password")
 
-        if not username or not email or not password:
+        if not username or not email or not password or not confirm_password:
             error = "All fields are required."
+            return render_template("register.html", title="Register", error=error)
+
+        if password != confirm_password:
+            error = "Passwords do not match."
             return render_template("register.html", title="Register", error=error)
 
         conn = Database.get_db_connection()
@@ -129,6 +172,7 @@ def register_page():
 
     return render_template("register.html", title="Register")
 
+
 def logout():
     session.pop('user', None)
     return redirect(url_for('login_page'))
@@ -149,6 +193,7 @@ def forecast():
     date_time = datetime.now().strftime("%I:%M %p, %a, %b %d, %Y")
 
     create_plot(cityName)
+    create_plot_precipitation(cityName)
 
     return render_template("Forecast.html",title="Weather Forecast", 
         temperature=temp, 

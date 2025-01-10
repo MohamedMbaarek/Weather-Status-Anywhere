@@ -15,10 +15,9 @@
             <form action="{{ url_for('logout') }}" method="POST">
                 <button type="submit" class="logout-btn">Logout</button>
             </form>
-           
         </div>
     </header>
-   
+
     {% block content %}
     <section class="main">
         <div class="left">
@@ -50,11 +49,27 @@
         </div>
         <div class="right">
             <div class="plot-container">
-                
                 <img src="{{ url_for('static', filename='current_plot.png') }}" alt="Temperature Plot" id="forecast-plot">
+            </div>
+            <div class="plot-buttons">
+                <button onclick="showPlot('temperature')" class="plot-btn">Temperature</button>
+                <button onclick="showPlot('humidity')" class="plot-btn">Humidity</button>
             </div>
         </div>
     </section>
     {% endblock %}
+
+    <script>
+        function showPlot(plotType) {
+            const plotImage = document.getElementById('forecast-plot');
+            if (plotType === 'temperature') {
+                plotImage.src = "{{ url_for('static', filename='current_plot.png') }}";
+                plotImage.alt = "Temperature Plot";
+            } else if (plotType === 'humidity') {
+                plotImage.src = "{{ url_for('static', filename='precipitation_plot.png') }}";
+                plotImage.alt = "Humidity Plot";
+            }
+        }
+    </script>
 </body>
 </html>

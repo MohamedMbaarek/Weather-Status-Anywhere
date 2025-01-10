@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
     <title>{{title}}</title>
+</head>
 <body>
     {% block content %}
     <section class="main">
@@ -24,6 +25,10 @@
             <div class="input">
                 <input type="password" required class="field" name="password" placeholder="Password" required>
                 <label for="Password" class="form_label">Password</label>
+            </div>
+            <div class="input">
+                <input type="password" required class="field" name="confirm_password" placeholder="Confirm Password" required>
+                <label for="Confirm Password" class="form_label">Confirm Password</label>
             </div>
             {% if error %}
             <div class="error">

@@ -13,37 +13,36 @@ body {
     height: 100vh;
 }
 
-
-.icon{
+.icon {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0;
 }
 
-#city{
+#city {
     font-weight: bold;
 }
 
-.info{
+.info {
     text-align: center;
 }
 
-.left{
+.left {
     margin: 0;
     width: 30%;
     height: 20%;
     padding: 20px;
 }
 
-section{
+section {
     display: flex;
     border: 1px solid black;
     width: 50%;
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     border-radius: 16px;
     background-color: rgba(255, 255, 255, 0.33);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -51,7 +50,7 @@ section{
     border: 0;
 }
 
-.detailed{
+.detailed {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,25 +61,25 @@ section{
     transform: translateY(-20%);
 }
 
-.column2{
+.column2 {
     padding: 15px;
 }
 
-.column{
+.column {
     float: left;
 }
 
-#temp{
+#temp {
     font-size: xx-large;
 }
 
-.left::after{
+.left::after {
     content: "";
     clear: both;
     display: table;
 }
 
-.desc{
+.desc {
     display: flex;
     font-size: large;
     justify-content: center;
@@ -93,18 +92,18 @@ section{
     transform: translateY(-75%);
 }
 
-#subtitle, #time, #city{
+#subtitle, #time, #city {
     color: rgb(81, 79, 79);
 }
 
-#humidity, #wind, #temp, #desc{
+#humidity, #wind, #temp, #desc {
     font-weight: bold;
     color: white;
 }
 
-
 .right {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
@@ -134,12 +133,33 @@ section{
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+.plot-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
 
-/* Header styling */
+.plot-btn {
+    background-color: #732F20;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 1rem;
+}
+
+.plot-btn:hover {
+    background-color: #F28B30;
+    transform: scale(1.05);
+}
+
 header {
     width: 100%;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5); 
+    background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
     top: 0;
     left: 0;
@@ -151,13 +171,14 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; }
+    flex-wrap: wrap;
+}
 
 .header-content h2 {
     margin: 0;
     font-size: 1.5rem;
     flex: 1 1 auto;
-    text-align: left; 
+    text-align: left;
 }
 
 .logout-btn {
@@ -169,7 +190,7 @@ header {
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin: 3px;
-    flex: 0 0 auto; 
+    flex: 0 0 auto;
 }
 
 .logout-btn:hover {
@@ -184,7 +205,7 @@ header {
 
     .header-content {
         flex-direction: column;
-        align-items: flex-start; 
+        align-items: flex-start;
     }
 
     .header-content h2 {
@@ -193,18 +214,27 @@ header {
     }
 
     .logout-btn {
-        width: 100%; 
-        text-align: center; 
+        width: 100%;
+        text-align: center;
         padding: 12px;
+    }
+
+    .plot-buttons {
+        flex-direction: column;
+    }
+
+    .plot-btn {
+        width: 80%;
+        margin: 10px 0;
     }
 }
 
 @media (max-width: 480px) {
     .header-content h2 {
-        font-size: 1rem; /* Smaller font size for very small screens */
+        font-size: 1rem;
     }
 
     .logout-btn {
-        font-size: 0.9rem; /* Adjust button text size */
+        font-size: 0.9rem;
     }
 }
