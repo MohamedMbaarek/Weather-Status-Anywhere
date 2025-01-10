@@ -107,17 +107,16 @@ section{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 70%;
     padding: 20px;
+    width: 70%;
 }
 
 .plot-container {
     text-align: center;
     width: 100%;
+    height: fit-content;
     background-color: rgba(255, 255, 255, 0.33);
-    padding: 20px;
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(6.5px);
 }
 
@@ -169,6 +168,7 @@ header {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin: 3px;
     flex: 0 0 auto; 
 }
 

@@ -40,17 +40,14 @@ def create_plot(cityName):
         time_list.append(data["dt_txt"][space + 1:len(data["dt_txt"]) - 3])
         temp_list.append(convert_kelvin_to_celcius(data["main"]["temp"]))
 
-    # Convert to numpy arrays for plotting
     time_array = np.array(time_list)
     temp_array = np.array(temp_list)
 
-    # Plot customization
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(10, 8))
     plt.bar(time_array, temp_array, color='#F28B30', alpha=0.8, edgecolor='#732F20')
 
-    # Styling the plot to match the transparent form style
-    plt.gca().set_facecolor((0, 0, 0, 0))  # Transparent background for plot area
-    plt.gcf().set_facecolor((1, 1, 1, 0))  # Transparent overall background
+    plt.gca().set_facecolor((0, 0, 0, 0))
+    plt.gcf().set_facecolor((1, 1, 1, 0))
 
     plt.title("Temperature Forecast", fontsize=16, color='Black')
     plt.xlabel("Time", fontsize=12, color='Black')
@@ -59,13 +56,11 @@ def create_plot(cityName):
     plt.yticks(fontsize=10, color='Black')
     plt.tight_layout()
 
-    # Save the plot as a transparent PNG
     plt.savefig("static/current_plot.png", transparent=True)
     plt.close()
 
 
 def login_page():
-    # If user is already logged in, redirect to home page
     if "user" in session:
         return redirect(url_for("home_page"))
 
@@ -73,16 +68,13 @@ def login_page():
         username = request.form.get("username")
         password = request.form.get("password")
 
-        # Check if both fields are provided
         if not username or not password:
             error = "Both fields are required."
             return render_template("login.html", title="Sign in", error=error)
 
-        # Get a database connection
         conn = Database.get_db_connection()
-        cursor = conn.cursor(dictionary=True)  # Use dictionary cursor for fetching results as dictionaries
+        cursor = conn.cursor(dictionary=True)
 
-        # Query to fetch user details by username
         cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
         user = cursor.fetchone()
 
@@ -114,7 +106,6 @@ def register_page():
         conn = Database.get_db_connection()
         cursor = conn.cursor()
 
-        # Check if username or email already exists
         cursor.execute("SELECT * FROM users WHERE username = %s OR email = %s", (username, email))
         existing_user = cursor.fetchone()
 
@@ -124,7 +115,6 @@ def register_page():
             error = "Username or email is already taken."
             return render_template("register.html", title="Register", error=error)
 
-        # Save the new user to the database
         hashed_password = generate_password_hash(password)
         cursor.execute(
             "INSERT INTO users (username, email, password) VALUES (%s, %s, %s)",
@@ -135,15 +125,13 @@ def register_page():
         cursor.close()
         conn.close()
 
-        # Log the user in after registration
-        #session["user"] = username
         return redirect(url_for("login_page"))
 
     return render_template("register.html", title="Register")
 
 def logout():
-    session.pop('user', None)  # Remove user from session
-    return redirect(url_for('login_page'))  # Redirect to the login page
+    session.pop('user', None)
+    return redirect(url_for('login_page'))
 
 def forecast():
     cityName = request.args["cityName"]

@@ -118,30 +118,29 @@ a{
 }
 
 
-/* Header styling */
 header {
     width: 100%;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
     top: 0;
     left: 0;
     color: #F28B30;
-    box-sizing: border-box; /* Ensures padding is included in the width */
+    box-sizing: border-box;
 }
 
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Allows content to wrap on smaller screens */
+    flex-wrap: wrap;
 }
 
 .header-content h2 {
     margin: 0;
     font-size: 1.5rem;
-    flex: 1 1 auto; /* Adjusts size based on available space */
-    text-align: left; /* Align title to the left */
+    flex: 1 1 auto;
+    text-align: left;
 }
 
 .logout-btn {
@@ -152,22 +151,21 @@ header {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    flex: 0 0 auto; /* Prevents the button from shrinking too much */
+    flex: 0 0 auto;
 }
 
 .logout-btn:hover {
     background-color: #F28B30;
 }
 
-/* Media queries for responsiveness */
 @media (max-width: 768px) {
     header {
         padding: 10px;
     }
 
     .header-content {
-        flex-direction: column; /* Stacks content vertically on smaller screens */
-        align-items: flex-start; /* Aligns items to the left */
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .header-content h2 {
@@ -176,18 +174,18 @@ header {
     }
 
     .logout-btn {
-        width: 100%; /* Full width button for easier interaction */
-        text-align: center; /* Centers button text */
+        width: 100%;
+        text-align: center;
         padding: 12px;
     }
 }
 
 @media (max-width: 480px) {
     .header-content h2 {
-        font-size: 1rem; /* Smaller font size for very small screens */
+        font-size: 1rem;
     }
 
     .logout-btn {
-        font-size: 0.9rem; /* Adjust button text size */
+        font-size: 0.9rem;
     }
 }
